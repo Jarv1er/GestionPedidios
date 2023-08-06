@@ -1,0 +1,44 @@
+{% extends 'WebApp/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!-- Heading -->
+  <section class="page-section cta">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-9 mx-auto">
+          <div class="cta-inner text-center rounded bg-success">
+            <h1>
+                Contacto
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="row justify-content-center">
+    <div class="col-6">
+      {% if 'valido' in request.GET %}
+      <div class="alert alert-success" role="alert">
+        !El Mensaje se ha enviado Correctamente, Gracias!
+      </div>
+      {% endif %}
+        <div class="card bg-light mb-3">
+            <div class="card-header bg-success text-white">
+                 Formulario de Contacto
+            </div>
+            
+            <div class="card-body">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <table>{{ form.as_table }}</table>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
+          </div>
+    </div>
+</div>
+
+    {% endblock %}

@@ -1,0 +1,91 @@
+<html>
+
+<head>
+    {% load static %}
+
+    <!-- Bootstrap -->
+    <link href="{% static 'WebApp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+     <!-- Fonts -->
+    
+     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> 
+     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+     
+
+    <!-- Styles -->
+    <link href="{% static 'WebApp/css/gestion.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+
+ <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg navbar-success bg-success">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Gestion de Pedidos</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+          <a class="nav-link" href="{% url 'servicios' %}">Servicios</a>
+          <a class="nav-link" href="{% url 'tienda' %}">Tienda</a>
+          <a class="nav-link" href="{% url 'blog' %}">Blog</a>
+          <a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
+        </div>
+      </div>
+      <div class="d-flex">
+        {% if user.is_authenticated %}
+            Hola {{ user.username }} &nbsp; &nbsp; <a href="{% url 'cerrar_sesion' %}">Cerrar Sesion</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a> &nbsp; &nbsp; <a href="{% url 'autentificacion' %}">Registrate</a>
+        {% endif %}
+      </div>
+    </div>
+ </nav>
+
+  {% block content %}
+
+  {% endblock%}
+
+    <!-- Footer -->
+    <footer class="footer text-faded text-center py-5 bg-success">
+      <div class="container">
+        <p class="m-0">
+	        <a href="#" class="link">
+	          <span class="fa-stack fa-lg">
+	            <i class="fa fa-circle fa-stack-2x"></i>
+	            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+	          </span>
+	        </a>
+	        <a href="#" class="link">
+	          <span class="fa-stack fa-lg">
+	            <i class="fa fa-circle fa-stack-2x"></i>
+	            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+	          </span>
+	        </a>
+	        <a href="#" class="link">
+	          <span class="fa-stack fa-lg">
+	            <i class="fa fa-circle fa-stack-2x"></i>
+	            <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+	          </span>
+	        </a>
+	    </p>
+        <p class="m-0 mbt">
+        	<a href="sample.html" class="link">Política de privacidad</a> ·
+        	<a href="sample.html" class="link">Aviso legal</a> ·
+        	<a href="sample.html" class="link">Cookies</a>
+		</p>
+        <p class="m-0 mbt1">&copy; Gestión de Pedidos 2020</p>
+      </div>
+	</footer>
+
+    <!-- Bootstrap -->
+    <script src="{% static 'WebApp/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'WebApp/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+
+</html>
